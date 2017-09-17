@@ -24,6 +24,10 @@ class NotationConverter
 
   end
 
+  def self.return_val (k, to_symbol)
+    (to_symbol) ? k.to_sym : k
+  end
+
   def self.to_camel(hash, type = :lower, to_symbol = false)
     if type == :upper
       to_upper_camel hash, to_symbol
@@ -36,7 +40,7 @@ class NotationConverter
 
     conversion_logic = lambda do |k|
       new_k = k.to_s.split('_').map.with_index{|e, i| e.capitalize }.join
-      (to_symbol) ? new_k.to_sym : new_k
+      return_val new_k, to_symbol
     end
     convert_hash hash, &conversion_logic
 
@@ -46,7 +50,7 @@ class NotationConverter
 
     conversion_logic = lambda do |k|
       new_k = k.to_s.split('_').map.with_index{|e, i| i == 0 ? e : e.capitalize }.join
-      (to_symbol) ? new_k.to_sym : new_k
+      return_val new_k, to_symbol
     end
     convert_hash hash, &conversion_logic
 
@@ -56,11 +60,11 @@ class NotationConverter
 
     conversion_logic = lambda do |k|
       new_k = k.gsub(/(.)([A-Z])/,'\1_\2').downcase
-      (to_symbol) ? new_k.to_sym : new_k
+      return_val new_k, to_symbol
     end
     convert_hash hash, &conversion_logic
 
   end
 
-  private_class_method :convert_hash
+  private_class_method :convert_hash, :return_val
 end
