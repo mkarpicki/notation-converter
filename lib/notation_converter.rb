@@ -24,31 +24,40 @@ class NotationConverter
 
   end
 
-  def self.to_camel(hash, type = :lower)
+  def self.to_camel(hash, type = :lower, to_symbol = false)
     if type == :upper
-      to_upper_camel hash
+      to_upper_camel hash, to_symbol
     else
-      to_lower_camel hash
+      to_lower_camel hash, to_symbol
     end
   end
 
-  def self.to_upper_camel(hash)
+  def self.to_upper_camel(hash, to_symbol = false)
 
-    conversion_logic = lambda { |k| k.to_s.split('_').map.with_index{|e, i| e.capitalize }.join }
+    conversion_logic = lambda do |k|
+      new_k = k.to_s.split('_').map.with_index{|e, i| e.capitalize }.join
+      (to_symbol) ? new_k.to_sym : new_k
+    end
     convert_hash hash, &conversion_logic
 
   end
 
-  def self.to_lower_camel(hash)
+  def self.to_lower_camel(hash, to_symbol = false)
 
-    conversion_logic = lambda { |k| k.to_s.split('_').map.with_index{|e, i| i == 0 ? e : e.capitalize }.join }
+    conversion_logic = lambda do |k|
+      new_k = k.to_s.split('_').map.with_index{|e, i| i == 0 ? e : e.capitalize }.join
+      (to_symbol) ? new_k.to_sym : new_k
+    end
     convert_hash hash, &conversion_logic
 
   end
 
-  def self.to_snake(hash)
+  def self.to_snake(hash, to_symbol = false)
 
-    conversion_logic = lambda { |k| k.gsub(/(.)([A-Z])/,'\1_\2').downcase }
+    conversion_logic = lambda do |k|
+      new_k = k.gsub(/(.)([A-Z])/,'\1_\2').downcase
+      (to_symbol) ? new_k.to_sym : new_k
+    end
     convert_hash hash, &conversion_logic
 
   end
