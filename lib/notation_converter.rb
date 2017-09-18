@@ -36,11 +36,11 @@ class NotationConverter
   # @param to_symbol [Boolean] default false (defines if returned keys will be symbols or strings)
   # @return [Hash|Array] input converted into the camelCase notation
   def self.to_camel(input, type = :lower, to_symbol = false)
-    if type == :upper
-      to_upper_camel input, to_symbol
-    else
-      to_lower_camel input, to_symbol
+    conversion_logic = lambda do |k|
+      new_k = k.to_s.split('_').map.with_index{ |e, i| (i == 0 && type != :upper) ? e.downcase : (e.slice(0,1).capitalize + e.slice(1..-1)) }.join
+      return_val new_k, to_symbol
     end
+    convert_input input, &conversion_logic
   end
 
   # Converts passed input to (Upper) CamelCase notation
@@ -49,13 +49,7 @@ class NotationConverter
   # @param to_symbol [Boolean] default false (defines if returned keys will be symbols or strings)
   # @return [Hash|Array] input converted into the (Upper) CamelCase notation
   def self.to_upper_camel(input, to_symbol = false)
-
-    conversion_logic = lambda do |k|
-      new_k = k.to_s.split('_').map.with_index{|e, i| e.capitalize }.join
-      return_val new_k, to_symbol
-    end
-    convert_input input, &conversion_logic
-
+    to_camel input, :upper, to_symbol
   end
 
   # Converts passed input to (lower) camelCase notation
@@ -64,13 +58,7 @@ class NotationConverter
   # @param to_symbol [Boolean] default false (defines if returned keys will be symbols or strings)
   # @return [Hash|Array] input converted into the (lower) camelCase notation
   def self.to_lower_camel(input, to_symbol = false)
-
-    conversion_logic = lambda do |k|
-      new_k = k.to_s.split('_').map.with_index{|e, i| i == 0 ? e : e.capitalize }.join
-      return_val new_k, to_symbol
-    end
-    convert_input input, &conversion_logic
-
+    to_camel input, :lower, to_symbol
   end
 
   # Converts passed input to snake_notation

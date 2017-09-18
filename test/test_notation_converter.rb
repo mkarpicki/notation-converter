@@ -223,8 +223,8 @@ class NotationConverterTest < Minitest::Test
 
   def camel_passed_hash
 
-    hash = { 'my_prop' => 'my_value'}
-    as_lower_camel = { 'myProp' => 'my_value'}
+    hash = { 'my_prop_a' => 'my_value'}
+    as_lower_camel = { 'myPropA' => 'my_value'}
 
     as_lower_camel_result = NotationConverter.to_camel hash
     assert_equal as_lower_camel_result, as_lower_camel
@@ -232,32 +232,32 @@ class NotationConverterTest < Minitest::Test
   end
 
   def camel_passed_hash_lower
-    hash = { 'my_prop' => 'my_value'}
-    as_lower_camel = { 'myProp' => 'my_value'}
+    hash = { 'My_prop_a' => 'my_value'}
+    as_lower_camel = { 'myPropA' => 'my_value'}
 
     as_lower_camel_result = NotationConverter.to_camel hash, :lower
-    assert_equal as_lower_camel_result, as_lower_camel
+    assert_equal as_lower_camel, as_lower_camel_result
   end
 
   def camel_passed_hash_upper
-    hash = { 'my_prop' => 'my_value'}
-    as_upper_camel = { 'MyProp' => 'my_value'}
+    hash = { 'my_prop_a' => 'my_value'}
+    as_upper_camel = { 'MyPropA' => 'my_value'}
 
     as_lower_camel_result = NotationConverter.to_camel hash, :upper
     assert_equal as_lower_camel_result, as_upper_camel
   end
 
   def camel_passed_hash_lower_to_sym
-    hash = { 'my_prop' => 'my_value'}
-    as_lower_camel = { :myProp => 'my_value'}
+    hash = { 'my_propA' => 'my_value'}
+    as_lower_camel = { :myPropA => 'my_value'}
 
     as_lower_camel_result = NotationConverter.to_camel hash, :lower, true
     assert_equal as_lower_camel_result, as_lower_camel
   end
 
   def camel_passed_hash_upper_to_sym
-    hash = { 'my_prop' => 'my_value'}
-    as_upper_camel = { :MyProp => 'my_value'}
+    hash = { 'my_propA' => 'my_value'}
+    as_upper_camel = { :MyPropA => 'my_value'}
 
     as_lower_camel_result = NotationConverter.to_camel hash, :upper, true
     assert_equal as_lower_camel_result, as_upper_camel
@@ -364,7 +364,6 @@ class NotationConverterTest < Minitest::Test
     as_lower_camel_result = NotationConverter.to_camel hash, :any_trash
     assert_equal as_lower_camel_result, as_lower_camel
   end
-
 
   def test_to_camel
     camel_passed_nil
