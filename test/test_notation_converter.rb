@@ -232,7 +232,7 @@ class NotationConverterTest < Minitest::Test
   end
 
   def camel_passed_hash_lower
-    hash = { 'My_prop_a' => 'my_value'}
+    hash = { 'My_pRop_A' => 'my_value'}
     as_lower_camel = { 'myPropA' => 'my_value'}
 
     as_lower_camel_result = NotationConverter.to_camel hash, :lower
@@ -249,14 +249,14 @@ class NotationConverterTest < Minitest::Test
 
   def camel_passed_hash_lower_to_sym
     hash = { 'my_propA' => 'my_value'}
-    as_lower_camel = { :myPropA => 'my_value'}
+    as_lower_camel = { :myPropa => 'my_value'}
 
     as_lower_camel_result = NotationConverter.to_camel hash, :lower, true
     assert_equal as_lower_camel_result, as_lower_camel
   end
 
   def camel_passed_hash_upper_to_sym
-    hash = { 'my_propA' => 'my_value'}
+    hash = { 'my_prop_A' => 'my_value'}
     as_upper_camel = { :MyPropA => 'my_value'}
 
     as_lower_camel_result = NotationConverter.to_camel hash, :upper, true
