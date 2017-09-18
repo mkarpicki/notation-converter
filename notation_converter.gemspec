@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'notation_converter'
-  s.version     = '1.0.2'
-  s.date        = '2017-09-18'
+  s.version     = '1.0.3'
+  s.date        = '2017-09-19'
   s.summary     = "Conversion between notations"
   s.description = "NotationConverter allows to convert between snake_notation and camelCase notation"
   s.authors     = ["Mariusz Karpicki"]
