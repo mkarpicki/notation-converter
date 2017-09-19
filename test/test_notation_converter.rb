@@ -9,21 +9,18 @@ class NotationConverterTest < Minitest::Test
     input =  { 'myProp' => 'myValue'}
     expected_output = { 'my_prop' => 'myValue'}
 
-    expected_output_result = NotationConverter.to_snake input
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_snake input), expected_output
   end
 
   def snake_passed_hash_to_sym
     input =  { 'myProp' => 'myValue'}
     expected_output = { :my_prop => 'myValue'}
 
-    expected_output_result = NotationConverter.to_snake input, true
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_snake input, true), expected_output
   end
 
   def snake_passed_nil
-    expected_output_result = NotationConverter.to_snake nil
-    assert_equal expected_output_result, nil
+    assert_equal (NotationConverter.to_snake nil), nil
   end
 
   def snake_passed_array
@@ -36,8 +33,7 @@ class NotationConverterTest < Minitest::Test
         { 'my_prop_b' => 'myValueB'}
     ]
 
-    expected_output_result = NotationConverter.to_snake input
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_snake input), expected_output
   end
 
   def snake_passed_array_to_sym
@@ -50,8 +46,7 @@ class NotationConverterTest < Minitest::Test
         { :my_prop_b => 'myValueB'}
     ]
 
-    expected_output_result = NotationConverter.to_snake input, true
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_snake input, true), expected_output
   end
 
   def test_to_snake
@@ -71,8 +66,7 @@ class NotationConverterTest < Minitest::Test
     input =  { 'my_prop' => 'my_value'}
     expected_output = { 'myProp' => 'my_value'}
 
-    expected_output_result = NotationConverter.to_lower_camel input
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_lower_camel input), expected_output
 
   end
 
@@ -81,14 +75,12 @@ class NotationConverterTest < Minitest::Test
     input =  { 'my_prop' => 'my_value'}
     expected_output = { :myProp => 'my_value'}
 
-    expected_output_result = NotationConverter.to_lower_camel input, true
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_lower_camel input, true), expected_output
 
   end
 
   def lower_camel_passed_nil
-    expected_output_result = NotationConverter.to_lower_camel nil
-    assert_equal expected_output_result, nil
+    assert_equal (NotationConverter.to_lower_camel nil), nil
   end
 
   def lower_camel_passed_array
@@ -102,8 +94,7 @@ class NotationConverterTest < Minitest::Test
         { 'myPropB' => 'my_value'}
     ]
 
-    expected_output_result = NotationConverter.to_lower_camel input
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_lower_camel input), expected_output
 
   end
 
@@ -118,8 +109,7 @@ class NotationConverterTest < Minitest::Test
         { :myPropB => 'my_value'}
     ]
 
-    expected_output_result = NotationConverter.to_lower_camel input, true
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_lower_camel input, true), expected_output
 
   end
 
@@ -139,26 +129,23 @@ class NotationConverterTest < Minitest::Test
   def upper_camel_passed_hash
 
     input =  { 'my_prop' => 'my_value'}
-    as_upper_camel = { 'MyProp' => 'my_value'}
+    expected_output = { 'MyProp' => 'my_value'}
 
-    as_upper_camel_result = NotationConverter.to_upper_camel input
-    assert_equal as_upper_camel_result, as_upper_camel
+    assert_equal (NotationConverter.to_upper_camel input), expected_output
 
   end
 
   def upper_camel_passed_hash_to_sym
 
     input =  { 'my_prop' => 'my_value'}
-    as_upper_camel = { :MyProp => 'my_value'}
+    expected_output = { :MyProp => 'my_value'}
 
-    as_upper_camel_result = NotationConverter.to_upper_camel input, true
-    assert_equal as_upper_camel_result, as_upper_camel
+    assert_equal (NotationConverter.to_upper_camel input, true), expected_output
 
   end
 
   def upper_camel_passed_nil
-    as_upper_camel_result = NotationConverter.to_upper_camel nil
-    assert_equal as_upper_camel_result, nil
+    assert_equal (NotationConverter.to_upper_camel nil), nil
 
   end
 
@@ -173,8 +160,7 @@ class NotationConverterTest < Minitest::Test
         { 'MyPropB' => 'my_value'}
     ]
 
-    expected_output_result = NotationConverter.to_upper_camel input
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_upper_camel input), expected_output
 
   end
 
@@ -189,8 +175,7 @@ class NotationConverterTest < Minitest::Test
         { :MyPropB => 'my_value'}
     ]
 
-    expected_output_result = NotationConverter.to_upper_camel input, true
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_upper_camel input, true), expected_output
 
   end
 
@@ -207,18 +192,15 @@ class NotationConverterTest < Minitest::Test
   # to_camel
 
   def camel_passed_nil
-    as_camel_result = NotationConverter.to_lower_camel nil
-    assert_equal as_camel_result, nil
+    assert_equal (NotationConverter.to_lower_camel nil), nil
   end
 
   def camel_passed_nil_lower
-    as_camel_result = NotationConverter.to_lower_camel nil, :lower
-    assert_equal as_camel_result, nil
+    assert_equal (NotationConverter.to_lower_camel nil, :lower), nil
   end
 
   def camel_passed_nil_any
-    as_camel_result = NotationConverter.to_lower_camel nil, :any_trash
-    assert_equal as_camel_result, nil
+    assert_equal (NotationConverter.to_lower_camel nil, :any_trash), nil
   end
 
   def camel_passed_hash
@@ -226,8 +208,7 @@ class NotationConverterTest < Minitest::Test
     input =  { 'my_prop_a' => 'my_value'}
     expected_output = { 'myPropA' => 'my_value'}
 
-    expected_output_result = NotationConverter.to_camel input
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_camel input), expected_output
 
   end
 
@@ -235,40 +216,35 @@ class NotationConverterTest < Minitest::Test
     input =  { 'My_pRop_A' => 'my_value'}
     expected_output = { 'myPropA' => 'my_value'}
 
-    expected_output_result = NotationConverter.to_camel input, :lower
-    assert_equal expected_output, expected_output_result
+    assert_equal (NotationConverter.to_camel input, :lower), expected_output
   end
 
   def camel_passed_hash_upper
     input =  { 'my_prop_a' => 'my_value'}
-    as_upper_camel = { 'MyPropA' => 'my_value'}
+    expected_output = { 'MyPropA' => 'my_value'}
 
-    expected_output_result = NotationConverter.to_camel input, :upper
-    assert_equal expected_output_result, as_upper_camel
+    assert_equal (NotationConverter.to_camel input, :upper), expected_output
   end
 
   def camel_passed_hash_lower_to_sym
     input =  { 'my_propA' => 'my_value'}
     expected_output = { :myPropa => 'my_value'}
 
-    expected_output_result = NotationConverter.to_camel input, :lower, true
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_camel input, :lower, true), expected_output
   end
 
   def camel_passed_hash_upper_to_sym
     input =  { 'my_prop_A' => 'my_value'}
-    as_upper_camel = { :MyPropA => 'my_value'}
+    expected_output = { :MyPropA => 'my_value'}
 
-    expected_output_result = NotationConverter.to_camel input, :upper, true
-    assert_equal expected_output_result, as_upper_camel
+    assert_equal (NotationConverter.to_camel input, :upper, true), expected_output
   end
 
   def camel_passed_hash_any
     input =  { 'my_prop' => 'my_value'}
     expected_output = { 'myProp' => 'my_value'}
 
-    expected_output_result = NotationConverter.to_camel input, :any_trash
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_camel input, :any_trash), expected_output
   end
 
   def camel_passed_array
@@ -282,8 +258,7 @@ class NotationConverterTest < Minitest::Test
         { 'myPropB' => 'my_value'}
     ]
 
-    expected_output_result = NotationConverter.to_camel input
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_camel input), expected_output
 
   end
 
@@ -298,8 +273,7 @@ class NotationConverterTest < Minitest::Test
         { 'myPropB' => 'my_value'}
     ]
 
-    expected_output_result = NotationConverter.to_camel input, :lower
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_camel input, :lower), expected_output
 
   end
 
@@ -314,8 +288,7 @@ class NotationConverterTest < Minitest::Test
         { 'MyPropB' => 'my_value'}
     ]
 
-    expected_output_result = NotationConverter.to_camel input, :upper
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_camel input, :upper), expected_output
 
   end
 
@@ -330,8 +303,7 @@ class NotationConverterTest < Minitest::Test
         { :myPropB => 'my_value'}
     ]
 
-    expected_output_result = NotationConverter.to_camel input, :lower, true
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_camel input, :lower, true), expected_output
 
   end
 
@@ -346,8 +318,7 @@ class NotationConverterTest < Minitest::Test
         { :MyPropB => 'my_value'}
     ]
 
-    expected_output_result = NotationConverter.to_camel input, :upper, true
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_camel input, :upper, true), expected_output
 
   end
 
@@ -361,8 +332,7 @@ class NotationConverterTest < Minitest::Test
         { 'myPropB' => 'my_value'}
     ]
 
-    expected_output_result = NotationConverter.to_camel input, :any_trash
-    assert_equal expected_output_result, expected_output
+    assert_equal (NotationConverter.to_camel input, :any_trash), expected_output
   end
 
   def test_to_camel
