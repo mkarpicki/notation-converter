@@ -31,10 +31,10 @@ class NotationConverter
 
   # Converts passed input to camelCase notation (lower or upper based on passed type param)
   #
-  # @param input [Hash|Array] input in snake_notation
+  # @param input [Hash|Array<Hash>] input in snake_notation
   # @param type [Symbol] the format type, `:lower` or `:upper` (default ':lower')
   # @param to_symbol [Boolean] default false (defines if returned keys will be symbols or strings)
-  # @return [Hash|Array] input converted into the camelCase notation
+  # @return [Hash|Array<Hash>] input converted into the camelCase notation
   def self.to_camel(input, type = :lower, to_symbol = false)
     conversion_logic = lambda do |k|
       new_k = k.to_s.split('_').map.with_index{ |e, i| (i == 0 && type != :upper) ? e.downcase : e.capitalize }.join
@@ -45,27 +45,27 @@ class NotationConverter
 
   # Converts passed input to (Upper) CamelCase notation
   #
-  # @param input [Hash|Array] input in snake_notation
+  # @param input [Hash|Array<Hash>] input in snake_notation
   # @param to_symbol [Boolean] default false (defines if returned keys will be symbols or strings)
-  # @return [Hash|Array] input converted into the (Upper) CamelCase notation
+  # @return [Hash|Array<Hash>] input converted into the (Upper) CamelCase notation
   def self.to_upper_camel(input, to_symbol = false)
     to_camel input, :upper, to_symbol
   end
 
   # Converts passed input to (lower) camelCase notation
   #
-  # @param input [Hash|Array] input in snake_notation
+  # @param input [Hash|Array<Hash>] input in snake_notation
   # @param to_symbol [Boolean] default false (defines if returned keys will be symbols or strings)
-  # @return [Hash|Array] input converted into the (lower) camelCase notation
+  # @return [Hash|Array<Hash>] input converted into the (lower) camelCase notation
   def self.to_lower_camel(input, to_symbol = false)
     to_camel input, :lower, to_symbol
   end
 
   # Converts passed input to snake_notation
   #
-  # @param input [Hash|Array] input in camelCase notation
+  # @param input [Hash|Array<Hash>] input in camelCase notation
   # @param to_symbol [Boolean] default false (defines if returned keys will be symbols or strings)
-  # @return [Hash|Array] input converted into the snake_notation
+  # @return [Hash|Array<Hash>] input converted into the snake_notation
   def self.to_snake(input, to_symbol = false)
 
     conversion_logic = lambda do |k|
