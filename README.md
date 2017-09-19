@@ -25,6 +25,10 @@ input = { 'myProp' => 'myValue'}
 output = NotationConverter.to_snake input, true
 # { :my_prop => 'myValue'}
 
+input = [{ 'myPropA' => 'myValue'}, { 'myPropB' => 'myValue'}]
+output = NotationConverter.to_snake input, true
+# [{ :my_prop_a => 'myValue'}, { :my_prop_b => 'myValue'}]
+
 ```
 
 
