@@ -37,7 +37,7 @@ class NotationConverter
   # @return [Hash|Array] input converted into the camelCase notation
   def self.to_camel(input, type = :lower, to_symbol = false)
     conversion_logic = lambda do |k|
-      new_k = k.to_s.split('_').map.with_index{ |e, i| (i == 0 && type != :upper) ? e.downcase : (e.slice(0,1).capitalize + e.slice(1..-1).downcase) }.join
+      new_k = k.to_s.split('_').map.with_index{ |e, i| (i == 0 && type != :upper) ? e.downcase : e.capitalize }.join
       return_val new_k, to_symbol
     end
     convert_input input, &conversion_logic

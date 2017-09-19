@@ -6,52 +6,52 @@ class NotationConverterTest < Minitest::Test
   # to_snake_passed
 
   def snake_passed_hash
-    hash = { 'myProp' => 'myValue'}
-    as_snake = { 'my_prop' => 'myValue'}
+    input =  { 'myProp' => 'myValue'}
+    expected_output = { 'my_prop' => 'myValue'}
 
-    as_snake_result = NotationConverter.to_snake hash
-    assert_equal as_snake_result, as_snake
+    expected_output_result = NotationConverter.to_snake input
+    assert_equal expected_output_result, expected_output
   end
 
   def snake_passed_hash_to_sym
-    hash = { 'myProp' => 'myValue'}
-    as_snake = { :my_prop => 'myValue'}
+    input =  { 'myProp' => 'myValue'}
+    expected_output = { :my_prop => 'myValue'}
 
-    as_snake_result = NotationConverter.to_snake hash, true
-    assert_equal as_snake_result, as_snake
+    expected_output_result = NotationConverter.to_snake input, true
+    assert_equal expected_output_result, expected_output
   end
 
   def snake_passed_nil
-    as_snake_result = NotationConverter.to_snake nil
-    assert_equal as_snake_result, nil
+    expected_output_result = NotationConverter.to_snake nil
+    assert_equal expected_output_result, nil
   end
 
   def snake_passed_array
-    hash = [
+    input =  [
         { 'myPropA' => 'myValueA'},
         { 'myPropB' => 'myValueB'}
     ]
-    as_snake = [
+    expected_output = [
         { 'my_prop_a' => 'myValueA'},
         { 'my_prop_b' => 'myValueB'}
     ]
 
-    as_snake_result = NotationConverter.to_snake hash
-    assert_equal as_snake_result, as_snake
+    expected_output_result = NotationConverter.to_snake input
+    assert_equal expected_output_result, expected_output
   end
 
   def snake_passed_array_to_sym
-    hash = [
+    input =  [
         { 'myPropA' => 'myValueA'},
         { 'myPropB' => 'myValueB'}
     ]
-    as_snake = [
+    expected_output = [
         { :my_prop_a => 'myValueA'},
         { :my_prop_b => 'myValueB'}
     ]
 
-    as_snake_result = NotationConverter.to_snake hash, true
-    assert_equal as_snake_result, as_snake
+    expected_output_result = NotationConverter.to_snake input, true
+    assert_equal expected_output_result, expected_output
   end
 
   def test_to_snake
@@ -68,58 +68,58 @@ class NotationConverterTest < Minitest::Test
 
   def lower_camel_passed_hash
 
-    hash = { 'my_prop' => 'my_value'}
-    as_lower_camel = { 'myProp' => 'my_value'}
+    input =  { 'my_prop' => 'my_value'}
+    expected_output = { 'myProp' => 'my_value'}
 
-    as_lower_camel_result = NotationConverter.to_lower_camel hash
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_lower_camel input
+    assert_equal expected_output_result, expected_output
 
   end
 
   def lower_camel_passed_hash_to_sym
 
-    hash = { 'my_prop' => 'my_value'}
-    as_lower_camel = { :myProp => 'my_value'}
+    input =  { 'my_prop' => 'my_value'}
+    expected_output = { :myProp => 'my_value'}
 
-    as_lower_camel_result = NotationConverter.to_lower_camel hash, true
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_lower_camel input, true
+    assert_equal expected_output_result, expected_output
 
   end
 
   def lower_camel_passed_nil
-    as_lower_camel_result = NotationConverter.to_lower_camel nil
-    assert_equal as_lower_camel_result, nil
+    expected_output_result = NotationConverter.to_lower_camel nil
+    assert_equal expected_output_result, nil
   end
 
   def lower_camel_passed_array
 
-    hash = [
+    input =  [
         { 'my_prop_a' => 'my_value'},
         { 'my_prop_b' => 'my_value'}
     ]
-    as_lower_camel = [
+    expected_output = [
         { 'myPropA' => 'my_value'},
         { 'myPropB' => 'my_value'}
     ]
 
-    as_lower_camel_result = NotationConverter.to_lower_camel hash
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_lower_camel input
+    assert_equal expected_output_result, expected_output
 
   end
 
   def lower_camel_passed_array_to_sym
 
-    hash = [
+    input =  [
         { 'my_prop_a' => 'my_value'},
         { 'my_prop_b' => 'my_value'}
     ]
-    as_lower_camel = [
+    expected_output = [
         { :myPropA => 'my_value'},
         { :myPropB => 'my_value'}
     ]
 
-    as_lower_camel_result = NotationConverter.to_lower_camel hash, true
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_lower_camel input, true
+    assert_equal expected_output_result, expected_output
 
   end
 
@@ -138,20 +138,20 @@ class NotationConverterTest < Minitest::Test
 
   def upper_camel_passed_hash
 
-    hash = { 'my_prop' => 'my_value'}
+    input =  { 'my_prop' => 'my_value'}
     as_upper_camel = { 'MyProp' => 'my_value'}
 
-    as_upper_camel_result = NotationConverter.to_upper_camel hash
+    as_upper_camel_result = NotationConverter.to_upper_camel input
     assert_equal as_upper_camel_result, as_upper_camel
 
   end
 
   def upper_camel_passed_hash_to_sym
 
-    hash = { 'my_prop' => 'my_value'}
+    input =  { 'my_prop' => 'my_value'}
     as_upper_camel = { :MyProp => 'my_value'}
 
-    as_upper_camel_result = NotationConverter.to_upper_camel hash, true
+    as_upper_camel_result = NotationConverter.to_upper_camel input, true
     assert_equal as_upper_camel_result, as_upper_camel
 
   end
@@ -164,33 +164,33 @@ class NotationConverterTest < Minitest::Test
 
   def upper_camel_passed_array
 
-    hash = [
+    input =  [
         { 'my_prop_a' => 'my_value'},
         { 'my_prop_b' => 'my_value'}
     ]
-    as_lower_camel = [
+    expected_output = [
         { 'MyPropA' => 'my_value'},
         { 'MyPropB' => 'my_value'}
     ]
 
-    as_lower_camel_result = NotationConverter.to_upper_camel hash
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_upper_camel input
+    assert_equal expected_output_result, expected_output
 
   end
 
   def upper_camel_passed_array_to_sym
 
-    hash = [
+    input =  [
         { 'my_prop_a' => 'my_value'},
         { 'my_prop_b' => 'my_value'}
     ]
-    as_lower_camel = [
+    expected_output = [
         { :MyPropA => 'my_value'},
         { :MyPropB => 'my_value'}
     ]
 
-    as_lower_camel_result = NotationConverter.to_upper_camel hash, true
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_upper_camel input, true
+    assert_equal expected_output_result, expected_output
 
   end
 
@@ -223,146 +223,146 @@ class NotationConverterTest < Minitest::Test
 
   def camel_passed_hash
 
-    hash = { 'my_prop_a' => 'my_value'}
-    as_lower_camel = { 'myPropA' => 'my_value'}
+    input =  { 'my_prop_a' => 'my_value'}
+    expected_output = { 'myPropA' => 'my_value'}
 
-    as_lower_camel_result = NotationConverter.to_camel hash
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_camel input
+    assert_equal expected_output_result, expected_output
 
   end
 
   def camel_passed_hash_lower
-    hash = { 'My_pRop_A' => 'my_value'}
-    as_lower_camel = { 'myPropA' => 'my_value'}
+    input =  { 'My_pRop_A' => 'my_value'}
+    expected_output = { 'myPropA' => 'my_value'}
 
-    as_lower_camel_result = NotationConverter.to_camel hash, :lower
-    assert_equal as_lower_camel, as_lower_camel_result
+    expected_output_result = NotationConverter.to_camel input, :lower
+    assert_equal expected_output, expected_output_result
   end
 
   def camel_passed_hash_upper
-    hash = { 'my_prop_a' => 'my_value'}
+    input =  { 'my_prop_a' => 'my_value'}
     as_upper_camel = { 'MyPropA' => 'my_value'}
 
-    as_lower_camel_result = NotationConverter.to_camel hash, :upper
-    assert_equal as_lower_camel_result, as_upper_camel
+    expected_output_result = NotationConverter.to_camel input, :upper
+    assert_equal expected_output_result, as_upper_camel
   end
 
   def camel_passed_hash_lower_to_sym
-    hash = { 'my_propA' => 'my_value'}
-    as_lower_camel = { :myPropa => 'my_value'}
+    input =  { 'my_propA' => 'my_value'}
+    expected_output = { :myPropa => 'my_value'}
 
-    as_lower_camel_result = NotationConverter.to_camel hash, :lower, true
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_camel input, :lower, true
+    assert_equal expected_output_result, expected_output
   end
 
   def camel_passed_hash_upper_to_sym
-    hash = { 'my_prop_A' => 'my_value'}
+    input =  { 'my_prop_A' => 'my_value'}
     as_upper_camel = { :MyPropA => 'my_value'}
 
-    as_lower_camel_result = NotationConverter.to_camel hash, :upper, true
-    assert_equal as_lower_camel_result, as_upper_camel
+    expected_output_result = NotationConverter.to_camel input, :upper, true
+    assert_equal expected_output_result, as_upper_camel
   end
 
   def camel_passed_hash_any
-    hash = { 'my_prop' => 'my_value'}
-    as_lower_camel = { 'myProp' => 'my_value'}
+    input =  { 'my_prop' => 'my_value'}
+    expected_output = { 'myProp' => 'my_value'}
 
-    as_lower_camel_result = NotationConverter.to_camel hash, :any_trash
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_camel input, :any_trash
+    assert_equal expected_output_result, expected_output
   end
 
   def camel_passed_array
 
-    hash = [
+    input =  [
         { 'my_prop_a' => 'my_value'},
         { 'my_prop_b' => 'my_value'}
     ]
-    as_lower_camel = [
+    expected_output = [
         { 'myPropA' => 'my_value'},
         { 'myPropB' => 'my_value'}
     ]
 
-    as_lower_camel_result = NotationConverter.to_camel hash
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_camel input
+    assert_equal expected_output_result, expected_output
 
   end
 
   def camel_passed_array_lower
 
-    hash = [
+    input =  [
         { 'my_prop_a' => 'my_value'},
         { 'my_prop_b' => 'my_value'}
     ]
-    as_lower_camel = [
+    expected_output = [
         { 'myPropA' => 'my_value'},
         { 'myPropB' => 'my_value'}
     ]
 
-    as_lower_camel_result = NotationConverter.to_camel hash, :lower
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_camel input, :lower
+    assert_equal expected_output_result, expected_output
 
   end
 
   def camel_passed_array_upper
 
-    hash = [
+    input =  [
         { 'my_prop_a' => 'my_value'},
         { 'my_prop_b' => 'my_value'}
     ]
-    as_lower_camel = [
+    expected_output = [
         { 'MyPropA' => 'my_value'},
         { 'MyPropB' => 'my_value'}
     ]
 
-    as_lower_camel_result = NotationConverter.to_camel hash, :upper
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_camel input, :upper
+    assert_equal expected_output_result, expected_output
 
   end
 
   def camel_passed_array_lower_to_sym
 
-    hash = [
+    input =  [
         { 'my_prop_a' => 'my_value'},
         { 'my_prop_b' => 'my_value'}
     ]
-    as_lower_camel = [
+    expected_output = [
         { :myPropA => 'my_value'},
         { :myPropB => 'my_value'}
     ]
 
-    as_lower_camel_result = NotationConverter.to_camel hash, :lower, true
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_camel input, :lower, true
+    assert_equal expected_output_result, expected_output
 
   end
 
   def camel_passed_array_upper_to_sym
 
-    hash = [
+    input =  [
         { 'my_prop_a' => 'my_value'},
         { 'my_prop_b' => 'my_value'}
     ]
-    as_lower_camel = [
+    expected_output = [
         { :MyPropA => 'my_value'},
         { :MyPropB => 'my_value'}
     ]
 
-    as_lower_camel_result = NotationConverter.to_camel hash, :upper, true
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_camel input, :upper, true
+    assert_equal expected_output_result, expected_output
 
   end
 
   def camel_passed_array_any
-    hash = [
+    input =  [
         { 'my_prop_a' => 'my_value'},
         { 'my_prop_b' => 'my_value'}
     ]
-    as_lower_camel = [
+    expected_output = [
         { 'myPropA' => 'my_value'},
         { 'myPropB' => 'my_value'}
     ]
 
-    as_lower_camel_result = NotationConverter.to_camel hash, :any_trash
-    assert_equal as_lower_camel_result, as_lower_camel
+    expected_output_result = NotationConverter.to_camel input, :any_trash
+    assert_equal expected_output_result, expected_output
   end
 
   def test_to_camel
