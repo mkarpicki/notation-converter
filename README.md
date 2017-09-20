@@ -1,6 +1,6 @@
-# NotationConverter
-
 ![status](https://travis-ci.org/mkarpicki/notation-converter.svg?branch=master)
+
+# NotationConverter
 
 NotationConverter allows to convert between snake_notation and camelCase notation (both ways)
 
