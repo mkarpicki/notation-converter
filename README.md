@@ -3,6 +3,7 @@
 # NotationConverter
 
 NotationConverter allows to convert between snake_notation and camelCase notation (both ways)
+Published: https://rubygems.org/gems/notation_converter
 
 ## Installing
 
